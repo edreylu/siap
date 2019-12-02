@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+       <div class="container mt-4 col-lg-4">
+            <div class="card border-info">
+                <div class="card-header bg-info">
+                    <h4> Editar Registro</h4>    
+                </div>
+                <div class="card-body">
+                    <form method="post" action="#" th:action="@{/admin/usuarios/update/{id}(id=${user.id})}" th:object="${user}">
+                        <label>Usuario</label>
+                        <input type="text" name="userName" style="text-transform: uppercase;" class="form-control" th:field="${user.userName}" required/>
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" style="text-transform: uppercase;" class="form-control" th:field="${user.nombre}" required/>
+                         <label>Apellido Paterno</label>
+                        <input type="text" name="apellidoPaterno" style="text-transform: uppercase;" class="form-control" th:field="${user.apellidoPaterno}" required/>
+                        <label>Apellido Materno</label>
+                        <input type="text" name="apellidoMaterno" style="text-transform: uppercase;" class="form-control" th:field="${user.apellidoMaterno}" required/>
+                        <label>Rol</label>
+                        <select name="role" th:field="${user.role.id}" class="form-control" required>
+                            <option th:text="Selecciona..." th:value="${0}"></option>
+                            <option th:each="i: ${listaRoles}" th:value="${i.id}" th:text="${i.role}"></option>
+                        </select>
+                        <label>Correo</label>
+                        <input type="text" name="correo" class="form-control" th:field="${user.correo}" required/>
+                        <label>Telefono</label>
+                        <input type="text" name="telefono" class="form-control" th:field="${user.telefono}" required/>
+                        <input type="submit" class="btn btn-success" value="Actualizar">
+                        <a href="../principal">Regresar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

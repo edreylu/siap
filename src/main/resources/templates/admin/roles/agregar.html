@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: head">
+        <script src="js/alerta.js"></script>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        <div class="container mt-4 col-lg-4">
+            <div class="card border-info">
+                <div class="card-header bg-info">
+                    <h4> Agregar Nuevo Registro</h4>    
+                </div>
+                
+                <div class="card-body">
+                    <form method="post" action="#" th:action="@{/admin/roles/agregar}" th:object="${role}">
+                        <label>Rol</label>
+                        <input type="text" name="role" style="text-transform: uppercase;" class="form-control" required/>
+                        
+                        <div class="valid-feedback">
+                         Todo bien.
+                         </div>
+                        <div class="invalid-feedback">
+                         Por favor proporcione rol valido.
+                         </div>
+                        <br/>
+                        <input type="submit" class="btn btn-success" value="Agregar">
+                        <a href="principal">Regresar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="../../static/js/alerta.js"></script>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        
+        <div class="container mt-4" th:switch="${lista}">
+       <h2 th:case="null">No hay usuarios</h2>
+        <div th:case="*">
+        <div class="card border-info">
+            
+            <div class="card-header bg-info text-white">
+                <a href="agregar" class="btn btn-light" >Agregar Registro</a>
+            </div>
+            <div class="card-body">
+                <table border="1" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>USUARIO</th>
+                            <th>CORREO</th>
+                            <th>NOMBRE</th>
+                            <th>ROL</th>
+                            <th>EDITAR</th>
+                            <th>ELIMINAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="dato: ${lista}">
+                            <td th:text="${dato.id}"></td>
+                            <td th:text="${dato.userName}"></td>
+                            <td th:text="${dato.correo}"></td>
+                            <td><label th:text="${dato.nombre}"/>
+                                <label value=" "/>
+                                <label th:text="${dato.apellidoPaterno}"/>
+                                <label value=" "/>
+                                <label th:text="${dato.apellidoMaterno}"/></td>
+                                <td th:text="${dato.role.role}"></td>
+                            <td>
+                                <a class="btn btn-warning" th:href="@{/admin/usuarios/editar/{id}(id=${dato.id})}">Editar</a>
+                                </td>
+                                <td>
+                                <a class="btn btn-danger" th:onclick="return confirmEliminar();" th:href="@{/admin/usuarios/eliminar/{id}(id=${dato.id})}">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

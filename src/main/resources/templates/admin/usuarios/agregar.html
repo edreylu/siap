@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        <div class="container mt-4 col-lg-4">
+            <div class="card border-info">
+                <div class="card-header bg-info">
+                    <h4> Agregar Nuevo Registro</h4>    
+                </div>
+                <div class="card-body">
+                    <form method="post" action="#" th:action="@{/admin/usuarios/agregar}" th:object="${user}">
+                        <label>Usuario</label>
+                        <input type="text" name="userName" class="form-control" style="text-transform: uppercase;" required/>
+                        <label>Password</label>
+                        <input type="text" name="password" class="form-control" style="text-transform: uppercase;" required/>
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" class="form-control" style="text-transform: uppercase;" required/>
+                        <label>Apellido Paterno</label>
+                        <input type="text" name="apellidoPaterno" style="text-transform: uppercase;" class="form-control" required/>
+                        <label>Apellido Materno</label>
+                        <input type="text" name="apellidoMaterno" style="text-transform: uppercase;" class="form-control" required/>
+                        <label>Rol</label>
+                        <select name="role.id" class="form-control" required>
+                            <option th:text="Selecciona..." th:value="${0}"></option>
+                            <option th:each="i: ${listaRoles}" th:value="${i.id}" th:text="${i.role}"></option>
+                        </select>
+                        <label>Correo</label>
+                        <input type="text" name="correo" class="form-control" required/>
+                        <label for="telefono">Telefono</label>
+                        <input type="text" name="telefono" class="form-control" required>
+                        <div class="valid-feedback">
+                         Todo bien.
+                         </div>
+                        <div class="invalid-feedback">
+                         Por favor proporcione telefono valido.
+                         </div>
+                        <br/>
+                        <input type="submit" class="btn btn-success" value="Agregar">
+                        <a href="principal">Regresar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

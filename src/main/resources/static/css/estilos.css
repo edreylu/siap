@@ -1,0 +1,28 @@
+body {
+    background-color: #ffffff;
+	color: black;
+}
+
+.container {
+	margin-top: 20px;
+        background-color: #ffffff;
+        margin-bottom: 20px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	margin: auto;
+	padding: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+footer .info-copyrigth {
+	display: inline-block;
+	color: #fff;
+}
+
+footer .info-copyrigth a {
+	color: #fff;
+}
