@@ -15,7 +15,7 @@ and open the template in the editor.
         <header th:replace="layout :: header"></header>
         
         <div class="container mt-4" th:switch="${lista}">
-       <h2 th:case="null">No hay usuarios</h2>
+       <h2 th:case="null">No hay usuarios disponibles</h2>
         <div th:case="*">
         <div class="card border-info">
             
